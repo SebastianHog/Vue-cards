@@ -21,7 +21,13 @@
         ref="passwordInput"
       />
     </div>
-    <button type="submit" class="">Log in</button>
+    <button
+      type="submit"
+      @click="loginUser"
+      class="border-2 border-black rounded-md mt-2 px-1 active:bg-black active:bg-opacity-15"
+    >
+      Log in
+    </button>
   </form>
 </template>
 

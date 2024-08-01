@@ -16,15 +16,6 @@
           magni voluptatum labore quis deserunt reprehenderit quod sint
           voluptatem iusto ex!
         </p>
-
-        <ul
-          class="list-decimal ml-6 font-semibold mt-4 flex flex-wrap gap-x-8 sm:flex-none"
-        >
-          <li>lorem ipsum</li>
-          <li>lorem ipsum</li>
-          <li>lorem ipsum</li>
-          <li>lorem ipsum</li>
-        </ul>
       </div>
       <div
         class="bg-blue-200 border-t-2 border-black p-2 rounded-br-md sm:rounded-tr-none rounded-bl-md sm:border-t-0 md:rounded-bl-none md:rounded-tr-md lg:rounded-bl-none"
@@ -75,7 +66,7 @@ import Login from "../Components/Login.vue";
 import authenticateUser from "../utils/authenticateUser.ts";
 
 export default {
-  components: { Register: Register, Login: Login },
+  components: { Register, Login },
   data() {
     return {
       login: true,

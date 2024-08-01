@@ -1,8 +1,5 @@
 <template>
-  <div class="h-screen bg-gray-400">
-    <h1>You are logged in</h1>
-    <LogoutButton />
-  </div>
+  <div class="h-screen w-screen bg-primary"></div>
 </template>
 
 <script>
