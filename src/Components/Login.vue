@@ -35,12 +35,14 @@
 import axios from "axios";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import useGlobalStateStore from "../stores/globalState";
 
 export default {
   setup() {
     const emailInput = ref(null);
     const passwordInput = ref(null);
     const router = useRouter();
+    const state = useGlobalStateStore();
 
     const loginUser = async () => {
       try {
