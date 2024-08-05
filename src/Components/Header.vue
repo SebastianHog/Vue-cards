@@ -30,8 +30,9 @@
 
 <script>
 import Sidebar from "./Sidebar.vue";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   components: { Sidebar },
   data() {
     return {
@@ -43,7 +44,7 @@ export default {
       this.openSidebar = !this.openSidebar;
     },
   },
-};
+});
 </script>
 
 <style>

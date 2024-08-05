@@ -4,9 +4,10 @@
 
 <script>
 import axios from "axios";
+import { defineComponent } from "vue";
 import { useRouter } from "vue-router";
 
-export default {
+export default defineComponent({
   setup() {
     const router = useRouter();
 
@@ -17,7 +18,6 @@ export default {
           {},
           { withCredentials: true }
         );
-        console.log("logged out resp:", resp.status);
         router.push("/");
       } catch (e) {
         console.log("Error:", e);
@@ -30,5 +30,5 @@ export default {
     return {};
   },
   methods: {},
-};
+});
 </script>

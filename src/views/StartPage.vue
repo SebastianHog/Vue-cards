@@ -64,8 +64,9 @@ import { useRouter } from "vue-router";
 import Register from "../Components/Register.vue";
 import Login from "../Components/Login.vue";
 import authenticateUser from "../utils/authenticateUser.ts";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   components: { Register, Login },
   data() {
     return {
@@ -78,7 +79,7 @@ export default {
     const user = await authenticateUser();
     if (user) {
       router.push("/home");
-    } else console.log("not logged in");
+    }
   },
-};
+});
 </script>

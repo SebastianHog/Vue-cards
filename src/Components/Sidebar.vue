@@ -20,9 +20,11 @@
 
 <script>
 import LogoutButton from "./LogoutButton.vue";
-export default {
+import { defineComponent } from "vue";
+
+export default defineComponent({
   components: { LogoutButton },
-};
+});
 </script>
 
 <style scoped>

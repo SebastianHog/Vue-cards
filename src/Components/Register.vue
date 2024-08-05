@@ -9,7 +9,7 @@
         type="text"
         id="email"
         class="bg-blue-300 p-2 border-2 border-black rounded-md"
-        ref="emailInput"
+        v-model="emailInput"
       />
     </div>
     <div>
@@ -18,7 +18,7 @@
         type="text"
         id="username"
         class="bg-blue-300 p-2 border-2 border-black rounded-md"
-        ref="usernameInput"
+        v-model="usernameInput"
       />
     </div>
     <div>
@@ -27,32 +27,38 @@
         type="password"
         id="password"
         class="bg-blue-300 p-2 border-2 border-black rounded-md"
-        ref="passwordInput"
+        v-model="passwordInput"
       />
     </div>
     <button type="submit" class="">Register</button>
   </form>
 </template>
 
-<script>
+<script lang="ts">
 import axios from "axios";
-import { ref } from "vue";
+import { defineComponent, ref } from "vue";
 import { useRouter } from "vue-router";
+import { registerUserType } from "../types/user";
 
-export default {
+export default defineComponent({
   setup() {
-    const emailInput = ref(null);
-    const passwordInput = ref(null);
-    const usernameInput = ref(null);
+    const emailInput = ref<string>("");
+    const usernameInput = ref<string>("");
+    const passwordInput = ref<string>("");
+
     const router = useRouter();
 
     const registerUser = async () => {
+      const payload: registerUserType = {
+        username: usernameInput.value,
+        email: emailInput.value,
+        password: passwordInput.value,
+      };
       try {
-        const resp = await axios.post("http://localhost:3000/auth/register", {
-          username: usernameInput.value.value,
-          email: emailInput.value.value,
-          password: passwordInput.value.value,
-        });
+        const resp = await axios.post(
+          "http://localhost:3000/auth/register",
+          payload
+        );
         if (resp.status == 200) router.push("/home");
         return resp;
       } catch (e) {
@@ -67,5 +73,5 @@ export default {
       registerUser,
     };
   },
-};
+});
 </script>

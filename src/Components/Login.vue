@@ -9,7 +9,7 @@
         type="text"
         id="email"
         class="bg-blue-300 p-2 border-2 border-black rounded-md"
-        ref="emailInput"
+        v-model="emailInput"
       />
     </div>
     <div>
@@ -18,7 +18,7 @@
         type="password"
         id="password"
         class="bg-blue-300 p-2 border-2 border-black rounded-md"
-        ref="passwordInput"
+        v-model="passwordInput"
       />
     </div>
     <button
@@ -31,27 +31,27 @@
   </form>
 </template>
 
-<script>
+<script lang="ts">
 import axios from "axios";
-import { ref } from "vue";
+import { defineComponent, ref } from "vue";
 import { useRouter } from "vue-router";
-import useGlobalStateStore from "../stores/globalState";
+import { loginUserType } from "../types/user";
 
-export default {
+export default defineComponent({
   setup() {
-    const emailInput = ref(null);
-    const passwordInput = ref(null);
+    const emailInput = ref<string>("");
+    const passwordInput = ref<string>("");
     const router = useRouter();
-    const state = useGlobalStateStore();
 
     const loginUser = async () => {
+      const payload: loginUserType = {
+        email: emailInput.value,
+        password: passwordInput.value,
+      };
       try {
         const resp = await axios.post(
           "http://localhost:3000/auth/login",
-          {
-            email: emailInput.value.value,
-            password: passwordInput.value.value,
-          },
+          payload,
           {
             withCredentials: true,
           }
@@ -70,5 +70,5 @@ export default {
       loginUser,
     };
   },
-};
+});
 </script>
